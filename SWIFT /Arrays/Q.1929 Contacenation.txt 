@@ -1,0 +1,11 @@
+class Solution {
+    func getConcatenation(_ nums: [Int]) -> [Int] {
+        let len = nums.count
+        var arr = [Int](repeating: 0, count: nums.count * 2)
+        for i in 0..<len {
+            arr[i] = nums[i]
+            arr[len + i] = nums[i]
+        }
+        return arr
+    }
+}
