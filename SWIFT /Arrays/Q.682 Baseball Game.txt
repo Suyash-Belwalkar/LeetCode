@@ -1,0 +1,23 @@
+class Solution {
+    func calPoints(_ operations: [String]) -> Int {
+        var scores = [Int]()
+        
+        for operation in operations {
+            switch operation {
+            case "+":
+                let lastScore = scores.removeLast()
+                let secondLastScore = scores.last ?? 0
+                scores.append(lastScore)
+                scores.append(lastScore + secondLastScore)
+            case "D":
+                scores.append((scores.last ?? 0) * 2)
+            case "C":
+                _ = scores.popLast()
+            default:
+                scores.append(Int(operation) ?? 0)
+            }
+        }
+        
+        return scores.reduce(0, +)
+    }
+}
